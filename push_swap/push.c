@@ -6,7 +6,7 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 16:54:08 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/10/26 17:03:37 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/10/26 19:03:10 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void pa(linked_list *stacka, linked_list *stackb)
     a = stacka->start;
     b = stackb->start;
     stackb->start = b->next;
-    b = a;
+    b->next = a;
     stacka->start = b;
 }
 
@@ -36,6 +36,6 @@ void pb(linked_list *stacka, linked_list *stackb)
     a = stacka->start;
     b = stackb->start;
     stacka->start = a->next;
-    a = b;
+    a->next = b;
     stackb->start = a;
 }  

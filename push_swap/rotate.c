@@ -6,7 +6,7 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 16:24:20 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/10/26 18:57:42 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/10/26 19:04:28 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void rb(linked_list *stackb)
 
 void rr(linked_list *stacka, linked_list *stackb)
 {
-    rb(stackb);
     ra(stacka);
+    rb(stackb);
 }
