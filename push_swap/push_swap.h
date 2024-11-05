@@ -6,7 +6,7 @@
 /*   By: mknsteja <mknsteja@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:20:02 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/11/05 13:05:53 by mknsteja         ###   ########.fr       */
+/*   Updated: 2024/11/05 16:50:11 by mknsteja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ void			rrr(linked_list *stacka, linked_list *stackb);
 void			sa(linked_list *stacka);
 void			sb(linked_list *stackb);
 void			ss(linked_list *stacka, linked_list *stackb);
+void			log_op(char *log, const char *str);
 #endif
