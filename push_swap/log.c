@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   log.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mknsteja <mknsteja@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:40:51 by mknsteja          #+#    #+#             */
-/*   Updated: 2024/11/05 16:53:38 by mknsteja         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:24:16 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
+
+int	ft_strlen(const char *string)
+{
+	int	length;
+
+	length = 0;
+	while (string[length])
+	{
+		length++;
+	}
+	return (length);
+}
 
 char	*ft_strdup(const char *src)
 {
@@ -19,7 +31,7 @@ char	*ft_strdup(const char *src)
 
 	if (!src)
 		return (NULL);
-	new_string = malloc(sizeof(char) * ft_strlen(src) + 1);
+	new_string = malloc(sizeof(char) * (ft_strlen(src) + 1));
 	if (new_string == NULL)
 		return (NULL);
 	i = 0;
@@ -44,7 +56,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	if (!s1)
 		return (ft_strdup(s2));
-	else if (!s2)
+	if (!s2)
 		return (ft_strdup(s1));
 	string = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 2));
 	if (string == NULL)
@@ -56,20 +68,36 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	while (s2[j])
 		string[i++] = s2[j++];
-	string[i+1] = ' ';
-	string[i+2] = '\0';
+	string[i] = ' ';
+	string[i+1] = '\0';
 	return (string);
 }
 
-void log_op(char *log, const char *str)
-{
-	char **temp;
+// void log_op(char **log, const char *str)
+// {
+// 	char *temp;
 	
-	*temp = log;
-	log = ft_strjoin(log, str);
-	if(*temp && temp)
-	{
-		free(*temp);
-		*temp = NULL;
-	}
+// 	if(!log || !str)
+// 		return;
+
+// 	temp = *log;
+// 	*log = ft_strjoin(*log, str);
+// 	if (!*log)
+//     {
+//         printf("Error: Memory allocation failed in log_op\n");
+//         // Clean up if necessary
+//         if (temp)
+//             free(temp);
+//         exit(-1); // Or handle the error as appropriate
+//     }
+// 	if(temp)
+// 		free(temp);
+// }
+
+void log_op(FILE *log_file, const char *str)
+{
+    if (!log_file || !str)
+        return;
+
+    fprintf(log_file, "%s\n", str);
 }
