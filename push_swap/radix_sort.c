@@ -6,77 +6,58 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:30:33 by mknsteja          #+#    #+#             */
-/*   Updated: 2024/11/09 18:05:50 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/11/10 11:14:43 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h> // Include this header for file operations
 
-int		calculate_max_bits(linked_list *stacka);
-void	perform_op(linked_list *stacka, linked_list *stackb, int i, FILE *log_file);
+int	calculate_max_bits(linked_list *stacka);
 
-int	radix_sort(linked_list *stacka, linked_list *stackb, FILE *log_file)
+int radix_sort(linked_list **stacka, linked_list **stackb, FILE *log_file)
 {
-	int	max_bits;
-	int	i;
+	int max_bits;
+	int lst_size;
+	int i;
 
-	max_bits = calculate_max_bits(stacka);
-	if (max_bits == -1)
+	if(!stacka || !*stacka)
 	{
-		printf("Error: Failed to calculate max bits\n");
-		return (-1);
+		printf("Empty stack for radix sort\n");
+		return(-1);
 	}
+	max_bits = calculate_max_bits(*stacka);
+
+	lst_size = list_size(*stacka);
 	i = 0;
-	// printf("Initial value of i: %d\n", i);
-	// printf("Max bits calculated: %d\n", max_bits);
-	while (i < max_bits)
+	while(max_bits--)
 	{
-		perform_op(stacka, stackb, i, log_file);
-		i++;
+		i = 0;	
+		while(i < lst_size)
+		{
+			if((((*stacka)->start->index) & 1) == 0)
+			{
+				log_op(log_file, "pb");
+				pb(*stacka, *stackb);
+			}
+			else
+			{
+				log_op(log_file, "ra");
+				ra(*stacka);
+			}
+			i++;
+		}
+		i = list_size(*stackb);
+		printf("i: %d\n", i);
+		while(i--)
+		{
+			log_op(log_file, "pa");
+			pa(*stacka, *stackb);
+		}
+		print_stack(*stacka, "stacka");
+		print_stack(*stackb, "stackb");
 	}
-	return (0);
+	return(0);
 }
-
-void perform_op(linked_list *stacka, linked_list *stackb, int i, FILE *log_file)
-{
-    int size;
-    int j = 0;
-    
-    if (!stacka)
-    {
-        printf("Error: Stack A is NULL\n");
-        return;
-    }
-    size = list_size(stacka);
-    while (j < size)
-    {
-        if (!stacka->start)
-        {
-            printf("Error: Stack A is empty during operation\n");
-            break;
-        }
-        if (((stacka->start->index >> i) & 1) == 0)
-        {
-            pb(stacka, stackb);
-            fprintf(log_file, "pb\n");
-        }
-        else
-        {
-            ra(stacka);
-            fprintf(log_file, "ra\n");
-        }
-        j++;
-    }
-    while (stackb && stackb->start)
-    {
-        pa(stacka, stackb);
-        fprintf(log_file, "pa\n");
-    }
-}
-
-
-
 
 int	calculate_max_bits(linked_list *stacka)
 {
@@ -88,7 +69,7 @@ int	calculate_max_bits(linked_list *stacka)
 	if (!stacka || !stacka->start)
 	{
 		printf("Error: Stack A is empty\n");
-		return (-1);
+		return (0);
 	}
 	ptr = stacka->start;
 	max = ptr->index;
@@ -103,7 +84,7 @@ int	calculate_max_bits(linked_list *stacka)
 		}
 		ptr = ptr->next;
 	}
-	while ((max >> max_bits) != 0)
+	while((int)((max >> max_bits)) != (int)0)
 		max_bits++;
 	// printf("Max bits: %d\n", max_bits);
 	return (max_bits);

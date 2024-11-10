@@ -6,7 +6,7 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:20:02 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/11/09 18:06:21 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/11/10 10:58:10 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ void			pb(linked_list *stacka, linked_list *stackb);
 void			log_op(FILE *log_file, const char *str);
 void			index_list(linked_list *ll);
 linked_list		*get_input(char **argv, int argc);
-int				radix_sort(linked_list *stacka, linked_list *stackb, FILE *log_file);
+int				radix_sort(linked_list **stacka, linked_list **stackb, FILE *log_file);
 int				list_size(linked_list *ll);
-void			perform_op(linked_list *stacka, linked_list *stackb, int i, FILE *log_file);
-
+void print_stack(linked_list *stack, const char *stack_name);
 #endif

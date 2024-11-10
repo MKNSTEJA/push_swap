@@ -6,7 +6,7 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:27:24 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/11/09 18:06:03 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/11/09 18:42:43 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,22 @@ void free_list(linked_list *list)
         current = next_node;
     }
     free(list);
+}
+
+void print_stack(linked_list *stack, const char *stack_name)
+{
+    printf("Contents of %s:\n", stack_name);
+    if (!stack || !stack->start)
+    {
+        printf("[Empty]\n");
+        return;
+    }
+    n_list *ptr = stack->start;
+    while (ptr)
+    {
+        printf("Value: %d, Index: %d\n", ptr->value, ptr->index);
+        ptr = ptr->next;
+    }
+    printf("\n");
 }
 

@@ -53,7 +53,7 @@ int main(int argc, char **argv)
     }
 
     // Pass the file pointer to radix_sort
-    radix_sort(stacka, stackb, log_file);
+    radix_sort(&stacka, &stackb, log_file);
 
     // Close the log file
     fclose(log_file);
