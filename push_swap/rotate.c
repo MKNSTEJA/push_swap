@@ -6,7 +6,7 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 16:24:20 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/11/09 13:13:12 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/11/10 12:35:13 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ void ra(linked_list *stacka)
 
     if (!stacka || !stacka->start || !(stacka->start)->next)
         return;
+    beg = malloc(sizeof(n_list));
     ptr = stacka->start;
-    beg = ptr;
-    stacka->start = beg->next;
+    free(stacka->start);
+    beg->value = ptr->value;
+    beg->index = ptr->index;
+    stacka->start = ptr->next;
     beg->next = NULL;
     while (ptr->next)
         ptr = ptr->next;
@@ -35,14 +38,19 @@ void rb(linked_list *stackb)
 
     if (!stackb || !stackb->start || !(stackb->start)->next)
         return;
+    beg = malloc(sizeof(n_list));
+    if (!beg)
+        return;
     ptr = stackb->start;
-    beg = ptr;
-    stackb->start = beg->next;
+    beg->value = ptr->value;
+    beg->index = ptr->index;
+    stackb->start = ptr->next;
     beg->next = NULL;
     while (ptr->next)
         ptr = ptr->next;
     ptr->next = beg;
 }
+
 
 void rr(linked_list *stacka, linked_list *stackb)
 {
