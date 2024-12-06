@@ -6,7 +6,7 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 12:59:44 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/12/06 11:09:36 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/12/06 21:15:54 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,28 @@
 
 int	check_numbers(char **argv);
 int	check_duplicates(char **argv);
+int	sort_checker(char **argv);
 
 int	errors(char **argv, int argc)
 {
 	if (argc < 2)
+	{
 		return (-1);
-	if (check_duplicates(argv) == -1)
-		return (-1);
+	}
 	if (check_numbers(argv) == -1)
+	{
 		return (-1);
-	return (0);
+	}
+	if (check_duplicates(argv) == -1)
+	{
+		return (-1);
+	}
+	if (sort_checker(argv) == 0)
+	{
+		return (0);
+	}
+
+	return (1);
 }
 
 int	check_numbers(char **argv)
@@ -50,7 +62,7 @@ int	check_numbers(char **argv)
 		}
 		i++;
 	}
-	return (-1);
+	return (0);
 }
 
 int	check_duplicates(char **argv)
@@ -72,6 +84,20 @@ int	check_duplicates(char **argv)
 				return (-1);
 			j++;
 		}
+		i++;
+	}
+	return (0);
+}
+
+int	sort_checker(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i + 1])
+	{
+		if (ft_atoi(argv[i]) > ft_atoi(argv[i + 1]))
+			return (-1);
 		i++;
 	}
 	return (0);

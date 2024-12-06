@@ -6,7 +6,7 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:19:42 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/12/06 11:12:59 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/12/06 19:00:36 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ t_head	*get_input(char **argv, int argc)
 	t_head	*ll;
 
 	i = 0;
+	while (argv[i])
+		i++;
+	argc = i;
+	i = 0;
 	ll = new_list();
 	if (!ll)
-	{
 		return (NULL);
-	}
 	while (i < argc)
 	{
 		if ((append_list(ll, ft_atoi(*(argv + i)))) == -1)
