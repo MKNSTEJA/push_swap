@@ -1,47 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   inputs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:19:42 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/11/09 12:47:08 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/12/06 11:12:59 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-linked_list	*get_input(char **argv, int argc)
+t_head	*get_input(char **argv, int argc)
 {
-	int			i;
-	linked_list	*ll;
+	int		i;
+	t_head	*ll;
 
 	i = 0;
 	ll = new_list();
 	if (!ll)
 	{
-		printf("Error: Failed to create new list\n");
 		return (NULL);
 	}
 	while (i < argc)
 	{
 		if ((append_list(ll, ft_atoi(*(argv + i)))) == -1)
-        {
-            free_list(ll);
-            printf("Error: Failed to append to list\n");
-            return (NULL);
-        }
+		{
+			free_list(ll);
+			return (NULL);
+		}
 		i++;
 	}
 	return (ll);
 }
 
-void	index_list(linked_list *ll)
+void	index_list(t_head *ll)
 {
-	n_list	*ptr1;
-	n_list	*ptr2;
-	int		index_val;
+	t_linked_list	*ptr1;
+	t_linked_list	*ptr2;
+	int				index_val;
 
 	ptr1 = ll->start;
 	ptr2 = ptr1;

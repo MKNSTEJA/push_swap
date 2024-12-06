@@ -1,24 +1,30 @@
-# Variables
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = $(wildcard *.c)
+SRCS = errors.c inputs.c lists.c main.c push.c radix_sort.c reverse_rotate.c rotate.c swap.c ft_putstr.c
 OBJS = $(SRCS:.c=.o)
 NAME = push_swap
+LIBFT_DIR = ./libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
 # Rules
-all: $(NAME)
+all: $(LIBFT) $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+$(LIBFT):
+	@make -C $(LIBFT_DIR)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(OBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFT_DIR) -lft
+
+%.o: %.c push_swap.h
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
+	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
 	rm -f $(NAME)
+	@make fclean -C $(LIBFT_DIR)
 
 re: fclean all
 

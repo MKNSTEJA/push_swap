@@ -6,29 +6,29 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:27:24 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/11/09 18:42:43 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/12/06 11:13:11 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-linked_list	*new_list(void)
+t_head	*new_list(void)
 {
-	linked_list	*ll;
+	t_head	*ll;
 
-	ll = malloc(sizeof(linked_list));
+	ll = malloc(sizeof(t_head));
 	if (ll == NULL)
 		return (NULL);
 	ll->start = NULL;
 	return (ll);
 }
 
-int	append_list(linked_list *ll, int num)
+int	append_list(t_head *ll, int num)
 {
-	n_list	*ptr;
-	n_list	*new;
+	t_linked_list	*ptr;
+	t_linked_list	*new;
 
-	new = malloc(sizeof(n_list));
+	new = malloc(sizeof(t_linked_list));
 	if (new == NULL)
 		return (-1);
 	new->value = num;
@@ -45,32 +45,31 @@ int	append_list(linked_list *ll, int num)
 			ptr = ptr->next;
 		ptr->next = new;
 	}
-
 	return (0);
 }
 
-int list_size(linked_list *list)
+int	list_size(t_head *list)
 {
-    int count = 0;
-    n_list *current;
+	int				count;
+	t_linked_list	*current;
 
-    if (!list)
-        return 0;
-
-    current = list->start;
-    while (current)
-    {
-        count++;
-        current = current->next;
-    }
-    return count;
+	count = 0;
+	if (!list)
+		return (0);
+	current = list->start;
+	while (current)
+	{
+		count++;
+		current = current->next;
+	}
+	return (count);
 }
 
-int	remove_list(linked_list *ll, int pos)
+int	remove_list(t_head *ll, int pos)
 {
-	n_list	*current;
-	n_list	*ahead;
-	n_list	*prev;
+	t_linked_list	*current;
+	t_linked_list	*ahead;
+	t_linked_list	*prev;
 
 	current = ll->start;
 	if (!current)
@@ -95,35 +94,19 @@ int	remove_list(linked_list *ll, int pos)
 	return (0);
 }
 
-void free_list(linked_list *list)
+void	free_list(t_head *list)
 {
-    if (!list)
-        return;
-    n_list *current = list->start;
-    n_list *next_node;
-    while (current)
-    {
-        next_node = current->next;
-        free(current);
-        current = next_node;
-    }
-    free(list);
-}
+	t_linked_list	*current;
+	t_linked_list	*next_node;
 
-void print_stack(linked_list *stack, const char *stack_name)
-{
-    printf("Contents of %s:\n", stack_name);
-    if (!stack || !stack->start)
-    {
-        printf("[Empty]\n");
-        return;
-    }
-    n_list *ptr = stack->start;
-    while (ptr)
-    {
-        printf("Value: %d, Index: %d\n", ptr->value, ptr->index);
-        ptr = ptr->next;
-    }
-    printf("\n");
+	if (!list)
+		return ;
+	current = list->start;
+	while (current)
+	{
+		next_node = current->next;
+		free(current);
+		current = next_node;
+	}
+	free(list);
 }
-

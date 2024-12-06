@@ -1,66 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/01 12:39:46 by kmummadi          #+#    #+#             */
+/*   Updated: 2024/12/06 11:13:34 by kmummadi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include <stdio.h> // Include this header for file operations
+#include <stdio.h>
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    linked_list *stacka;
-    linked_list *stackb;
-    n_list *ptr;
-    FILE *log_file;
+	t_head	*stacka;
+	t_head	*stackb;
 
-    if (argc < 2)
-        return (0);
-
-    stacka = get_input(argv + 1, argc - 1);
-    if (!stacka)
-    {
-        printf("Error\n");
-        return (0);
-    }
-
-    stackb = new_list();
-    if (!stackb)
-    {
-        free_list(stacka);
-        printf("Error\n");
-        return (0);
-    }
-
-    // Open the log file for writing
-    log_file = fopen("operations.log", "w");
-    if (!log_file)
-    {
-        perror("Error opening log file");
-        free_list(stacka);
-        free_list(stackb);
-        return (1);
-    }
-
-    index_list(stacka);
-
-    ptr = stacka->start;
-    if (!ptr)
-    {
-        fprintf(stderr, "Error: stacka is empty\n");
-        return (1);
-    }
-    while (ptr)
-    {
-        // printf("i:%d\n", ptr->index);
-        // printf("v:%d\n", ptr->value);
-        printf("\n");
-        ptr = ptr->next;
-    }
-
-    // Pass the file pointer to radix_sort
-    radix_sort(&stacka, &stackb, log_file);
-    print_stack(stacka, "stacka");
-
-    // Close the log file
-    fclose(log_file);
-
-    free_list(stacka);
-    free_list(stackb);
-
-    return (0);
+	if (errors(argv, argc) < 0)
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (-1);
+	}
+	stacka = get_input(argv + 1, argc - 1);
+	if (!stacka)
+	{
+		printf("List Error\n");
+		return (0);
+	}
+	stackb = new_list();
+	if (!stackb)
+	{
+		free_list(stacka);
+		printf("List Error\n");
+		return (0);
+	}
+	index_list(stacka);
+	radix_sort(&stacka, &stackb);
+	free_list(stacka);
+	free_list(stackb);
+	return (0);
 }
