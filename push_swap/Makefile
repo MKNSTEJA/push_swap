@@ -1,12 +1,12 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 SRCS = errors.c inputs.c lists.c main.c push.c radix_sort.c reverse_rotate.c rotate.c swap.c ft_putstr.c simple_sort.c
-OBJS = $(SRCS:.c=.o)
+OBJS_DIR = obj
+OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 NAME = push_swap
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-# Rules
 all: $(LIBFT) $(NAME)
 
 $(LIBFT):
@@ -15,11 +15,15 @@ $(LIBFT):
 $(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFT_DIR) -lft
 
-%.o: %.c push_swap.h
+$(OBJS_DIR)/%.o: %.c push_swap.h | $(OBJS_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJS_DIR):
+	@mkdir -p $(OBJS_DIR)
 
 clean:
 	rm -f $(OBJS)
+	rm -rf $(OBJS_DIR)
 	@make clean -C $(LIBFT_DIR)
 
 fclean: clean

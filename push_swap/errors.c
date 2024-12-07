@@ -6,7 +6,7 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 12:59:44 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/12/07 10:40:33 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/12/07 11:04:23 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	errors(char **argv, int argc)
 	{
 		return (0);
 	}
-
 	return (1);
 }
 
