@@ -6,7 +6,7 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 12:59:44 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/12/06 21:15:54 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/12/07 10:40:33 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	check_numbers(char **argv)
 		j = 0;
 		if (ft_strlen(argv[i]) >= 10)
 		{
-			if (ft_strncmp(argv[i], "2147483647", ft_strlen("2147483647")) < 0)
+			if (ft_strncmp(argv[i], "2147483647", ft_strlen("2147483647")) > 0)
 				return (-1);
 		}
 		while (argv[i][j] != '\0')

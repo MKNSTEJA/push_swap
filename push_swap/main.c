@@ -6,7 +6,7 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 12:39:46 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/12/07 09:06:02 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/12/07 10:54:16 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	main(int argc, char **argv)
 
 	str = split_strings(argv, argc);
 	error = errors(str, argc);
-	// for (int i = 0; str[i]; i++)
-	// 	printf("%s ", str[i]);
 	if (error == -1)
 	{
 		ft_putstr_fd("Error", 2);
@@ -40,10 +38,7 @@ int	main(int argc, char **argv)
 		return (free_str(str, argv));
 	stackb = new_list();
 	if (!stackb)
-	{
-		free_list(stacka);
-		return (free_str(str, argv));
-	}
+		return (free_list(stacka), free_str(str, argv));
 	index_list(stacka);
 	choose_sort(&stacka, &stackb);
 	free_list(stacka);
