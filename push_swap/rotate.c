@@ -6,7 +6,7 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 16:24:20 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/12/06 11:02:33 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/12/07 09:09:52 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ra(t_head *stacka)
 	while (ptr->next)
 		ptr = ptr->next;
 	ptr->next = beg;
+	log_op("ra");
 }
 
 void	rb(t_head *stackb)
@@ -49,10 +50,12 @@ void	rb(t_head *stackb)
 	while (ptr->next)
 		ptr = ptr->next;
 	ptr->next = beg;
+	log_op("rb");
 }
 
 void	rr(t_head *stacka, t_head *stackb)
 {
 	ra(stacka);
 	rb(stackb);
+	log_op("rr");
 }

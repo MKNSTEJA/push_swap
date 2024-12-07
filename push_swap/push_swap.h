@@ -6,7 +6,7 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:20:02 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/12/06 11:19:33 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/12/07 08:56:38 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,6 @@ int					radix_sort(t_head **stacka, t_head **stackb);
 int					list_size(t_head *ll);
 void				ft_putstr(const char *str);
 int					errors(char **argv, int argc);
+void				sort_three(t_head **stacka, t_head **stackb);
+void				sort_five(t_head **stacka, t_head **stackb, int counter);
 #endif

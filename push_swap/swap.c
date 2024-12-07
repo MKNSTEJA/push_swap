@@ -6,7 +6,7 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 13:42:05 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/12/06 11:02:33 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/12/07 09:10:23 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	sa(t_head *stacka)
 	first->next = second->next;
 	second->next = first;
 	stacka->start = second;
+	log_op("sa");
 }
 
 void	sb(t_head *stackb)
@@ -38,10 +39,12 @@ void	sb(t_head *stackb)
 	first->next = second->next;
 	second->next = first;
 	stackb->start = second;
+	log_op("sb");
 }
 
 void	ss(t_head *stacka, t_head *stackb)
 {
 	sa(stacka);
 	sb(stackb);
+	log_op("ss");
 }

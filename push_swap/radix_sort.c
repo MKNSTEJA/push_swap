@@ -6,7 +6,7 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:30:33 by mknsteja          #+#    #+#             */
-/*   Updated: 2024/12/06 11:21:28 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/12/07 09:11:29 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	push_back(t_head **stacka, t_head **stackb)
 {
 	while ((*stackb)->start)
 	{
-		log_op("pa");
 		pa(*stacka, *stackb);
 	}
 }
@@ -56,12 +55,10 @@ void	push_or_rotate(t_head **stacka, t_head **stackb, int j)
 {
 	if ((((*stacka)->start->index >> j) & 1) == 0)
 	{
-		log_op("pb");
 		pb(*stacka, *stackb);
 	}
 	else
 	{
-		log_op("ra");
 		ra(*stacka);
 	}
 }
@@ -75,7 +72,6 @@ int	calculate_max_bits(t_head *stacka)
 	max_bits = 0;
 	if (!stacka || !stacka->start)
 	{
-		printf("Error: Stack A is empty\n");
 		return (0);
 	}
 	ptr = stacka->start;

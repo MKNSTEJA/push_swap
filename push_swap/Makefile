@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
-SRCS = errors.c inputs.c lists.c main.c push.c radix_sort.c reverse_rotate.c rotate.c swap.c ft_putstr.c
+SRCS = errors.c inputs.c lists.c main.c push.c radix_sort.c reverse_rotate.c rotate.c swap.c ft_putstr.c simple_sort.c
 OBJS = $(SRCS:.c=.o)
 NAME = push_swap
 LIBFT_DIR = ./libft

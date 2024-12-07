@@ -6,7 +6,7 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 12:39:46 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/12/06 21:14:55 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/12/07 09:06:02 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 static int	free_str(char **str, char **argv);
 static char	**split_strings(char **argv, int argc);
+void		choose_sort(t_head **stacka, t_head **stackb);
 
 int	main(int argc, char **argv)
 {
@@ -25,6 +26,8 @@ int	main(int argc, char **argv)
 
 	str = split_strings(argv, argc);
 	error = errors(str, argc);
+	// for (int i = 0; str[i]; i++)
+	// 	printf("%s ", str[i]);
 	if (error == -1)
 	{
 		ft_putstr_fd("Error", 2);
@@ -42,7 +45,7 @@ int	main(int argc, char **argv)
 		return (free_str(str, argv));
 	}
 	index_list(stacka);
-	radix_sort(&stacka, &stackb);
+	choose_sort(&stacka, &stackb);
 	free_list(stacka);
 	free_list(stackb);
 	return (free_str(str, argv));
@@ -84,4 +87,33 @@ static int	free_str(char **str, char **argv)
 		}
 	}
 	return (0);
+}
+
+void	choose_sort(t_head **stacka, t_head **stackb)
+{
+	int				counter;
+	t_linked_list	*ptr;
+
+	counter = 0;
+	ptr = (*stacka)->start;
+	while (ptr)
+	{
+		counter++;
+		ptr = ptr->next;
+	}
+	if (counter == 3)
+	{
+		sort_three(stacka, stackb);
+		return ;
+	}
+	else if (counter <= 5 && counter != 3)
+	{
+		sort_five(stacka, stackb, counter);
+		return ;
+	}
+	else
+	{
+		radix_sort(stacka, stackb);
+		return ;
+	}
 }
