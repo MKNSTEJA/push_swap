@@ -6,7 +6,7 @@
 /*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 12:59:44 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/12/07 11:04:23 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/12/07 17:48:11 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	errors(char **argv, int argc)
 {
 	if (argc < 2)
 	{
-		return (-1);
+		return (0);
 	}
 	if (check_numbers(argv) == -1)
 	{
