@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   simple_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mknsteja <mknsteja@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 08:22:30 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/12/07 09:04:24 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:55:38 by mknsteja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 void	move_to_top(t_head **stack, int index);
 int		find_min_index(t_head *stack);
@@ -31,8 +32,10 @@ void	sort_five(t_head **stacka, t_head **stackb, int counter)
 	else if (counter == 5)
 	{
 		move_to_top(stacka, min);
+    printf("first min: %d\n", min);
 		pb(*stacka, *stackb);
 		min = find_min_index(*stacka);
+    printf("second min: %d\n", min);
 		move_to_top(stacka, min);
 		pb(*stacka, *stackb);
 		sort_three(stacka, stackb);
@@ -48,16 +51,18 @@ int	find_min_index(t_head *stack)
 	int				min_index;
 	t_linked_list	*current;
 
-	min = stack->start->index;
+	min = stack->start->value;
 	index = 0;
 	min_index = 0;
 	current = stack->start;
 	while (current)
 	{
+    printf("comparing %d with %d\n", current->value, min);
 		if (current->value < min)
 		{
 			min_index = index;
-			min = current->index;
+			min = current->value;
+      printf("min_index = %d\n", min_index);
 		}
 		current = current->next;
 		index++;

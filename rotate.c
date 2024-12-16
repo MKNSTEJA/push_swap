@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mknsteja <mknsteja@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 16:24:20 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/12/07 09:09:52 by kmummadi         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:42:57 by mknsteja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,38 @@
 
 void	ra(t_head *stacka)
 {
-	t_linked_list	*beg;
-	t_linked_list	*ptr;
+    t_linked_list *first;
+    t_linked_list *last;
 
-	if (!stacka || !stacka->start || !(stacka->start)->next)
-		return ;
-	beg = malloc(sizeof(t_linked_list));
-	ptr = stacka->start;
-	free(stacka->start);
-	beg->value = ptr->value;
-	beg->index = ptr->index;
-	stacka->start = ptr->next;
-	beg->next = NULL;
-	while (ptr->next)
-		ptr = ptr->next;
-	ptr->next = beg;
-	log_op("ra");
+    if (!stacka || !stacka->start || !(stacka->start->next))
+        return;
+
+    first = stacka->start;         
+    stacka->start = first->next;  
+    last = stacka->start;
+    while (last->next)
+        last = last->next;
+    last->next = first;
+    first->next = NULL;
+    log_op("ra");
 }
 
 void	rb(t_head *stackb)
 {
-	t_linked_list	*beg;
-	t_linked_list	*ptr;
+    t_linked_list *first;
+    t_linked_list *last;
 
-	if (!stackb || !stackb->start || !(stackb->start)->next)
-		return ;
-	beg = malloc(sizeof(t_linked_list));
-	if (!beg)
-		return ;
-	ptr = stackb->start;
-	beg->value = ptr->value;
-	beg->index = ptr->index;
-	stackb->start = ptr->next;
-	beg->next = NULL;
-	while (ptr->next)
-		ptr = ptr->next;
-	ptr->next = beg;
-	log_op("rb");
+    if (!stackb || !stackb->start || !(stackb->start->next))
+        return;
+
+    first = stackb->start;         
+    stackb->start = first->next;  
+    last = stackb->start;
+    while (last->next)
+        last = last->next;
+    last->next = first;
+    first->next = NULL;
+    log_op("ra");
 }
 
 void	rr(t_head *stacka, t_head *stackb)
