@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mknsteja <mknsteja@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kmummadi <kmummadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 08:22:30 by kmummadi          #+#    #+#             */
-/*   Updated: 2024/12/09 16:55:38 by mknsteja         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:02:35 by kmummadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ void	sort_five(t_head **stacka, t_head **stackb, int counter)
 	else if (counter == 5)
 	{
 		move_to_top(stacka, min);
-    printf("first min: %d\n", min);
 		pb(*stacka, *stackb);
 		min = find_min_index(*stacka);
-    printf("second min: %d\n", min);
 		move_to_top(stacka, min);
 		pb(*stacka, *stackb);
 		sort_three(stacka, stackb);
@@ -57,12 +55,10 @@ int	find_min_index(t_head *stack)
 	current = stack->start;
 	while (current)
 	{
-    printf("comparing %d with %d\n", current->value, min);
 		if (current->value < min)
 		{
 			min_index = index;
 			min = current->value;
-      printf("min_index = %d\n", min_index);
 		}
 		current = current->next;
 		index++;
@@ -75,17 +71,8 @@ void	move_to_top(t_head **stack, int index)
 	int	size;
 
 	size = 5;
-	if (index <= size / 2)
-	{
-		while (index-- > 0)
-			ra(*stack);
-	}
-	else
-	{
-		index = size - index;
-		while (index-- > 0)
-			rra(*stack);
-	}
+	while (index-- > 0)
+		ra(*stack);
 }
 
 void	sort_three(t_head **stacka, t_head **stackb)
