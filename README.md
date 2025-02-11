@@ -29,9 +29,13 @@ This project is part of the 42 School curriculum and challenges you to sort numb
 ## Features
 
 ✅ **Optimized Sorting** – Uses one of the most efficient algorithm to sort a stack of numbers with minimal operations. 
+
 ✅ **Limited Moves, Maximum Strategy** – Only a handful of operations are allowed. Get creative! 
+
 ✅ **Handles Various Input Sizes** – Works smoothly for small to large numbers of integers.  
+
 ✅ **Error Handling Included** – No funky inputs allowed! (Looking at you, duplicate numbers and invalid entries... 👀)  
+
 
 ---
 
